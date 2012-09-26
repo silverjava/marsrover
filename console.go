@@ -15,8 +15,6 @@ const (
 )
 
 func Run(lines []string) {
-    // plateau := CreatePlateauFromInput(lines[0])
-
     for i := 1; i < len(lines); {
         rover := CreateRoverFromInput(lines[i])
         ControllRover(lines[i + 1], rover)
@@ -44,19 +42,17 @@ func ControllRover(cmd string, r *Rover) {
     }
 }
 
-func stringToOrientation(s string) (int, error) {
-    facing := -1
+func stringToOrientation(s string) (facing int, err error) {
     switch s[0] {
     case 'E': facing = EAST
     case 'S': facing = SOUTH
     case 'W': facing = WEST
     case 'N': facing = NORTH
+    default:
+        facing = -1
+        err = errors.New("Invalid given parameter.")
     }
-
-    if facing == -1 {
-        return -1, errors.New("Invalid given parameter")
-    }
-    return facing, nil
+    return
 }
 
 func CreateRoverFromInput(line string) *Rover {
