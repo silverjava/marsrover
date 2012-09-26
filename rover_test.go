@@ -12,15 +12,7 @@ func TestRoverMovingWithFacingEast(t *testing.T) {
     rover := newRover(facing)
 
     rover.MoveForward()
-    if rover.x != x + 1 {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.y != y {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.facing != rover.facing {
+    if rover.x != x + 1 || rover.y != y || rover.facing != facing {
         t.Fatalf("Moving is failed")
     }
 }
@@ -30,15 +22,7 @@ func TestRoverMovingWithFacingSouth(t *testing.T) {
     rover := newRover(facing)
 
     rover.MoveForward()
-    if rover.y != y - 1 {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.x != x {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.facing != rover.facing {
+    if rover.y != y - 1 || rover.x != x || rover.facing != facing {
         t.Fatalf("Moving is failed")
     }
 }
@@ -48,15 +32,7 @@ func TestRoverMovingWithFacingWest(t *testing.T) {
     rover := newRover(facing)
 
     rover.MoveForward()
-    if rover.x != x - 1 {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.y != y {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.facing != rover.facing {
+    if rover.x != x - 1 || rover.y != y || rover.facing != facing {
         t.Fatalf("Moving is failed")
     }
 }
@@ -66,15 +42,7 @@ func TestRoverMovingWithFacingNorth(t *testing.T) {
     rover := newRover(facing)
 
     rover.MoveForward()
-    if rover.y != y + 1 {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.x != x {
-        t.Fatalf("Moving is failed")
-    }
-
-    if rover.facing != rover.facing {
+    if rover.y != y + 1 || rover.x != x || rover.facing != facing {
         t.Fatalf("Moving is failed")
     }
 }
