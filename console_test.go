@@ -11,16 +11,8 @@ func TestCreatePlateau(t *testing.T) {
     input := fmt.Sprintf("%d %d", width, height)
 
     p := CreatePlateauFromInput(input)
-    if p == nil {
+    if p == nil || p.width != width || p.height != height {
         t.Errorf("Can't create plateau with input %s", input)
-    }
-
-    if p.width != width {
-        t.Errorf("The width of plateau should be %d", width)
-    }
-
-    if p.height != height {
-        t.Errorf("The height of plateau should be %d", height)
     }
 }
 
