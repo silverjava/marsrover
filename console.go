@@ -4,7 +4,6 @@ import (
     "strings"
     "strconv"
     "fmt"
-    "errors"
 )
 
 const (
@@ -50,7 +49,7 @@ func stringToOrientation(s string) (facing int, err error) {
     case 'N': facing = NORTH
     default:
         facing = -1
-        err = errors.New("Invalid given parameter.")
+        err = fmt.Errorf("Invalid given parameter.")
     }
     return
 }
