@@ -81,24 +81,17 @@ func TestControllRoverTurnAndMove(t *testing.T) {
 }
 
 func TestStringToOrientation(t *testing.T) {
-    if facing, _ := stringToOrientation("E"); facing != EAST {
-        t.Errorf("Failed to convert string to orientation.")
-    }
+    testData := make(map[string]int)
+    testData["E"] = EAST
+    testData["S"] = SOUTH
+    testData["W"] = WEST
+    testData["N"] = NORTH
 
-    if facing, _ := stringToOrientation("S"); facing != SOUTH {
-        t.Errorf("Failed to convert string to orientation.")
-    }
-
-    if facing, _ := stringToOrientation("W"); facing != WEST {
-        t.Errorf("Failed to convert string to orientation.")
-    }
-
-    if facing, _ := stringToOrientation("N"); facing != NORTH {
-        t.Errorf("Failed to convert string to orientation.")
-    }
-
-    if _, err := stringToOrientation("A"); err == nil {
-        t.Errorf("Failed to convert string to orientation.")
+    for k, v := range testData {
+        facing, _ := stringToOrientation(k)
+        if facing != v {
+            t.Errorf("Failed to convert string to orientation.")
+        }
     }
 }
 
