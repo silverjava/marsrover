@@ -5,6 +5,7 @@ import (
 )
 
 var x, y int = 3, 3
+var plateau *Plateau = &Plateau{width:5, height:5}
 
 func TestRoverMovingWithFacingEast(t *testing.T) {
     facing := EAST

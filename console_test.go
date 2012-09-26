@@ -27,13 +27,13 @@ func TestCreatePlateau(t *testing.T) {
 func TestControllRoverTurnLeft(t *testing.T) {
     rover := &Rover{x:3, y:3, facing:EAST}
 
-    ControllRover("L", rover)
+    ControllRover("L", rover, plateau)
     if rover.facing != NORTH {
         t.Errorf("Wrong direction after turning left.")
     }
 
     rover.facing = EAST
-    ControllRover("LL", rover)
+    ControllRover("LL", rover, plateau)
     if rover.facing != WEST {
         t.Errorf("Wrong direction after turning left.")
     }
@@ -42,13 +42,13 @@ func TestControllRoverTurnLeft(t *testing.T) {
 func TestControlRoverTurnRight(t *testing.T) {
     rover := &Rover{x:3, y:3, facing:EAST}
 
-    ControllRover("R", rover)
+    ControllRover("R", rover, plateau)
     if rover.facing != SOUTH {
         t.Errorf("Wrong direction after turning left.")
     }
 
     rover.facing = EAST
-    ControllRover("RR", rover)
+    ControllRover("RR", rover, plateau)
     if rover.facing != WEST {
         t.Errorf("Wrong direction after turning left.")
     }
@@ -58,13 +58,13 @@ func TestControllRoverMove(t *testing.T) {
     x, y := 3, 3
     rover := &Rover{x:x, y:y, facing:EAST}
 
-    ControllRover("M", rover)
+    ControllRover("M", rover, plateau)
     if rover.x != x + 1 && rover.y == y {
         t.Errorf("Wrong moving.")
     }
 
     rover = &Rover{x:x, y:y, facing:SOUTH}
-    ControllRover("M", rover)
+    ControllRover("M", rover, plateau)
     if rover.y != y - 1 && rover.x == x {
         t.Errorf("Wrong moving.")
     }
@@ -74,7 +74,7 @@ func TestControllRoverTurnAndMove(t *testing.T) {
     x, y := 3, 3
     rover := &Rover{x:x, y:y, facing:EAST}
 
-    ControllRover("LM", rover)
+    ControllRover("LM", rover, plateau)
     if rover.facing != NORTH && rover.y != y + 1 && rover.x == x {
         t.Errorf("Wrong move and turn.")
     }

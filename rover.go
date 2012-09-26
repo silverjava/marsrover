@@ -4,13 +4,17 @@ type Rover struct {
     x, y, facing int
 }
 
-func (r *Rover) MoveForward() {
+func (r *Rover) MoveForward() (oldX, oldY int) {
+    oldX = r.x
+    oldY = r.y
+
     switch r.facing {
         case EAST: r.x++
         case SOUTH: r.y--
         case WEST: r.x--
         case NORTH: r.y++
     }
+    return
 }
 
 func (r *Rover) TurnLeft() {

@@ -14,9 +14,10 @@ const (
 )
 
 func Run(lines []string) {
+    plateau := CreatePlateauFromInput(lines[0])
     for i := 1; i < len(lines); {
         rover := CreateRoverFromInput(lines[i])
-        ControllRover(lines[i + 1], rover)
+        ControllRover(lines[i + 1], rover, plateau)
 
         fmt.Printf("%v\n", rover)
         i = i + 2
@@ -31,7 +32,7 @@ func CreatePlateauFromInput(line string) *Plateau {
     return &Plateau{width:width, height:height}
 }
 
-func ControllRover(cmd string, r *Rover) {
+func ControllRover(cmd string, r *Rover, p *Plateau) {
     for _, c := range cmd {
         switch c {
         case 'L': r.TurnLeft()
