@@ -4,6 +4,7 @@ import (
     "strings"
     "strconv"
     "fmt"
+    "errors"
 )
 
 const (
@@ -43,15 +44,19 @@ func ControllRover(cmd string, r *Rover) {
     }
 }
 
-func stringToOrientation(s string) int {
+func stringToOrientation(s string) (int, error) {
+    facing := -1
     switch s[0] {
-    case 'E': return EAST
-    case 'S': return SOUTH
-    case 'W': return WEST
-    case 'N': return NORTH
+    case 'E': facing = EAST
+    case 'S': facing = SOUTH
+    case 'W': facing = WEST
+    case 'N': facing = NORTH
     }
-    // error
-    return -1
+
+    if facing == -1 {
+        return -1, errors.New("Invalid given parameter")
+    }
+    return facing, nil
 }
 
 func CreateRoverFromInput(line string) *Rover {
@@ -59,7 +64,7 @@ func CreateRoverFromInput(line string) *Rover {
 
     x, _ := strconv.Atoi(strs[0])
     y, _ := strconv.Atoi(strs[1])
-    facing := stringToOrientation(strs[2])
+    facing, _ := stringToOrientation(strs[2])
 
     return &Rover{x:x, y:y, facing:facing}
 }
